@@ -110,6 +110,9 @@ const galleryImages = [
   { src: "/assets/nexus/gallery-10.jpg", alt: "Dental restoration close up" },
   { src: "/assets/nexus/gallery-11.jpg", alt: "Nexus Dental Lab model work" },
   { src: "/assets/nexus/gallery-12.jpg", alt: "Nexus Dental Lab restorative work" },
+  { src: "/assets/nexus/gallery-13.jpg", alt: "Dental restoration aesthetics" },
+  { src: "/assets/nexus/gallery-14.jpg", alt: "Precision dental laboratory case" },
+  { src: "/assets/nexus/gallery-15.jpg", alt: "Advanced crown restoration work" },
 ];
 
 const businessEmail = "nexusdentalab@gmail.com";
