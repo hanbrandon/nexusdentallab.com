@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexus Dental Lab - Building Smiles, Building Relationships</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;family=Sora:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#009fef",
+                        "on-primary-fixed-variant": "#7e2c00",
+                        "on-secondary": "#263143",
+                        "on-secondary-fixed-variant": "#3c475a",
+                        "surface-dim": "#0c1324",
+                        "error": "#ffb4ab",
+                        "surface-bright": "#33394c",
+                        "primary-fixed-dim": "#ffb598",
+                        "border-low-contrast": "#334155",
+                        "secondary-fixed-dim": "#bcc7de",
+                        "on-surface-variant": "#E2BFB2",
+                        "on-surface": "#dce1fb",
+                        "on-background": "#dce1fb",
+                        "tertiary": "#93ccff",
+                        "inverse-primary": "#a53c00",
+                        "glass-bg": "rgba(30, 41, 59, 0.6)",
+                        "outline-variant": "#5a4137",
+                        "surface": "#0c1324",
+                        "surface-container": "#191f31",
+                        "primary": "#ffb598",
+                        "secondary-container": "#3e495d",
+                        "surface-container-highest": "#2e3447",
+                        "on-tertiary-fixed": "#001d31",
+                        "surface-container-high": "#23293c",
+                        "surface-container-low": "#151b2d",
+                        "outline": "#a98a7e",
+                        "primary-fixed": "#ffdbcd",
+                        "on-tertiary-fixed-variant": "#004b73",
+                        "surface-container-lowest": "#070d1f",
+                        "inverse-surface": "#dce1fb",
+                        "inverse-on-surface": "#2a3043",
+                        "on-secondary-fixed": "#111c2d",
+                        "on-primary": "#591d00",
+                        "on-primary-fixed": "#360f00",
+                        "surface-subtle": "#1E293B",
+                        "on-tertiary-container": "#003350",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary": "#003351",
+                        "on-error": "#690005",
+                        "primary-container": "#ff6716",
+                        "tertiary-fixed-dim": "#93ccff",
+                        "background": "#0c1324",
+                        "secondary-fixed": "#d8e3fb",
+                        "on-secondary-container": "#aeb9d0",
+                        "error-container": "#93000a",
+                        "tertiary-fixed": "#cce5ff",
+                        "surface-variant": "#2e3447",
+                        "on-primary-container": "#581c00",
+                        "surface-tint": "#ffb598",
+                        "secondary": "#bcc7de",
+                        "light-bg": "#FFFFFF",
+                        "light-surface": "#F8F9FA"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "32px",
+                        "section-padding-sm": "64px",
+                        "section-padding-lg": "120px",
+                        "container-max": "1280px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["JetBrains Mono", "monospace"],
+                        "headline-lg-mobile": ["Sora", "sans-serif"],
+                        "display-lg": ["Sora", "sans-serif"],
+                        "headline-lg": ["Sora", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "headline-md": ["Sora", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Force light mode override for this specific prompt request */
+        .light-mode-override {
+            background-color: #FFFFFF !important;
+            color: #0c1324 !important;
+        }
+        .light-surface-override {
+            background-color: #F8F9FA !important;
+        }
+        .text-navy {
+            color: #0c1324 !important;
+        }
+        .text-orange {
+            color: #ff6716 !important;
+        }
+        .bg-orange {
+            background-color: #ff6716 !important;
+        }
+    </style>
+</head>
+<body class="light-mode-override font-body-md text-navy antialiased">
+<!-- TopNavBar -->
+<header class="bg-white/80 backdrop-blur-md font-label-caps text-label-caps docked full-width top-0 sticky z-50 border-b border-gray-200 shadow-sm flex justify-between items-center w-full px-gutter max-w-container-max mx-auto h-20">
+<div class="font-headline-md text-headline-md font-bold text-navy flex items-center gap-2">
+<span class="material-symbols-outlined text-orange" data-icon="token" style="font-variation-settings: 'FILL' 1;">token</span>
+            Nexus Dental Lab
+        </div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-orange font-bold border-b-2 border-orange pb-1" href="#">About</a>
+<a class="text-gray-600 hover:text-orange transition-all duration-300 active:scale-95 transition-transform" href="#">Services</a>
+<a class="text-gray-600 hover:text-orange transition-all duration-300 active:scale-95 transition-transform" href="#">Gallery</a>
+<a class="text-gray-600 hover:text-orange transition-all duration-300 active:scale-95 transition-transform" href="#">FAQ</a>
+<a class="text-gray-600 hover:text-orange transition-all duration-300 active:scale-95 transition-transform" href="#">Contact</a>
+</nav>
+<div class="hidden md:block">
+<button class="bg-orange text-white px-6 py-3 rounded hover:bg-orange/90 transition-colors flex items-center gap-2 font-label-caps text-label-caps shadow-sm">
+                Get Started
+                <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<button class="md:hidden text-navy">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</header>
+<!-- Hero Section -->
+<section class="relative w-full min-h-[80vh] flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Dental professional working in a laboratory" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLufJaZxadsLEViqFNY26yE-VlBUQIYkxpFlZzDCc7wUDIdqduuPFb4OnAq4qZDPkFDGyo-O7onyJbg_rv9oLEzt6dEgrjOiwHqUMUSHef7pRBFApk7oywDCMnB5GTMK1CpKUEZEJWRJEgbRVQZIjRv6hXYoobTN370zvZG8LR2jtglnCHQ2MJG_XzmC1NLam3XPEUlsXcfX0LtnhK7CbUqHtORm4oh7mIkDZPrvgLbVEEhoYJBIMvaEmV7n"/>
+<div class="absolute inset-0 bg-white/80 md:bg-gradient-to-r md:from-white md:via-white/90 md:to-transparent"></div>
+</div>
+<div class="relative z-10 w-full max-w-container-max mx-auto px-gutter py-24 md:py-32 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div class="flex flex-col gap-8">
+<h1 class="font-display-lg text-display-lg text-navy">
+                Building Smiles,<br/>
+<span class="text-orange">Building Relationships</span>
+</h1>
+<p class="font-body-lg text-body-lg text-gray-700 max-w-xl leading-relaxed">
+                Nexus Dental Lab combines 24 years of technical mastery with cutting-edge digital innovation. We aren't just a laboratory; we are a strategic partner dedicated to elevating the standard of restorative dentistry and enhancing patient outcomes nationwide through precision-engineered solutions.
+            </p>
+<div class="pt-4">
+<button class="bg-orange text-white px-10 py-5 rounded-lg hover:bg-orange/90 transition-all transform hover:scale-105 active:scale-95 flex items-center gap-3 font-label-caps text-label-caps shadow-lg w-fit">
+                    Partner with Nexus
+                    <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="hidden md:block"></div>
+</div>
+</section>
+<!-- About Section -->
+<section class="w-full light-surface-override py-section-padding-lg py-32">
+<div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div class="relative w-full aspect-square md:aspect-[4/3] rounded-xl overflow-hidden shadow-md">
+<img alt="Close up of a layered zirconia dental restoration" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLveJ_XPCzSE1mTMbVBts4C0N2sk2rRQjmyryRiQbkjTp_HxE2yMr6LoJnElrpsfZSPoH-p2EVd2yI9oapArK7WjIkx9yPQcx1E2cxkiik4uZyw5vmAMACZjT0jabJfZekEGPFyYAPVLJVl_3gne2xnQB88zQYu_KGBlsI6yiGMJzPN5zxTu0jRX-DvBGr6w-fibxYEWmHoPDJCYmwuYoW24lxDiHPXoA6Y0wfAXTtH6bamar4HhL_YQ1Waw"/>
+</div>
+<div class="flex flex-col gap-6">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-white border border-gray-200 rounded-full w-fit">
+<span class="w-2 h-2 rounded-full bg-orange animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-gray-600">Our Philosophy</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-navy">Shaping Dentistry's Future Together</h2>
+<p class="font-body-md text-body-md text-gray-600">With over two decades of technical evolution, Nexus Dental Lab has transitioned from traditional craftsmanship to a digital-first leader. Our commitment to excellence is reflected in our rigorous CAD/CAM protocols and the integration of high-performance biocompatible materials. We don't just manufacture restorations; we engineer confidence for clinicians and life-changing smiles for patients. Our 24-year journey is a testament to our consistency, reliability, and our drive to shape the future of dentistry through technological precision and clinical insight.</p>
+<div class="pt-4">
+<a class="text-orange font-label-caps text-label-caps flex items-center gap-2 hover:underline underline-offset-4" href="#">
+                        Learn More About Us
+                        <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Section -->
+<section class="w-full py-section-padding-lg">
+<div class="max-w-container-max mx-auto px-gutter flex flex-col gap-12">
+<div class="text-center max-w-2xl mx-auto flex flex-col gap-4">
+<h2 class="font-headline-lg text-headline-lg text-navy">Services for Dentists</h2>
+<p class="font-body-md text-body-md text-gray-600">Precision engineering meets clinical excellence. We offer a comprehensive range of advanced restorative solutions.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Service Card 1 -->
+<div class="bg-white border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-orange to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="w-12 h-12 bg-light-surface rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-orange" data-icon="dentistry">dentistry</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-navy mb-4">Full Zirconia</h3>
+<p class="font-body-md text-body-md text-gray-600 mb-6">Full Zirconia is a high-quality dedicated to the digital dentistry line-oriented dental restorations.</p>
+<a class="text-orange font-label-caps text-label-caps flex items-center gap-2 group-hover:gap-3 transition-all" href="#">
+                        View Details
+                        <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<!-- Service Card 2 -->
+<div class="bg-white border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-orange to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="w-12 h-12 bg-light-surface rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-orange" data-icon="layers">layers</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-navy mb-4">Layered Zirconia</h3>
+<p class="font-body-md text-body-md text-gray-600 mb-6">Layered Zirconia is a comprehensive dental framework and high-quality restoration demanding zirconias.</p>
+<a class="text-orange font-label-caps text-label-caps flex items-center gap-2 group-hover:gap-3 transition-all" href="#">
+                        View Details
+                        <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Gallery Section (Bento Grid) -->
+<section class="w-full light-surface-override py-section-padding-lg py-32">
+<div class="max-w-container-max mx-auto px-gutter flex flex-col gap-12">
+<div class="flex justify-between items-end">
+<h2 class="font-headline-lg text-headline-lg text-navy">Our Precision Work</h2>
+<a class="hidden md:flex text-orange font-label-caps text-label-caps items-center gap-2 hover:underline underline-offset-4" href="#">
+                    View Full Gallery
+                    <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
+<div class="col-span-2 row-span-2 rounded-xl overflow-hidden shadow-sm relative group">
+<img alt="Detailed view of a dental restoration on a stone model" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLsR9_f4DqolvUfjsFIFlAgS59z60-cb8K-zZI55cj-zVXg84DHG66dZMBUNz-XRp8qgYW6SLevZOqEtCnfREZqzAhJXtHZ2uuKW_r54Et4pf2YxjhhEPFCtLE0dKAsxdpLNl-jZw1jZxvvEnai77vJqH_GwRVOVkPyCFQhDouTCoFmkifLec0LXwUaaWBA9Uo2mLBd_BR3MO6IAMpMoLmDXOBOKDrU7dqe9pUk4n8t_ojroae6cIGHMPn6Z"/>
+<div class="absolute inset-0 bg-navy/20 group-hover:bg-transparent transition-colors duration-500"></div>
+</div>
+<div class="rounded-xl overflow-hidden shadow-sm relative group">
+<img alt="Close up of a posterior zirconia crown" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLumZYm7_SH6ffjdk0LOcMtxo3VRmYqsgaqdfDGH0Dm40EfukVq3AoqpYm8Y1IPHuSIGC9TlzJi5KIZXN949Muwar4ND12EFew9GGLK-AZIsatC1JwhtmOyStU0BAckhn6BKyp4w7BhRURxtw5Sfk9Aa9BR5oqV1x2JwdIEoCO6Pfo0HlG1JUeQSBW3kcVs0aYoAVuKeFNKPIjU-T6Z9FwJfhexzpdIrjELGowSlMs7sUDkRHwomXsOOMgA"/>
+</div>
+<div class="rounded-xl overflow-hidden shadow-sm relative group">
+<img alt="Anterior layered zirconia crowns on model" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLs4F9tisDEkvsx4f6wEOHBolfaHZsV64MqzaH7_4oB_92wvEPFr8GtZJ0mlMrOZF8cgxaHkpbK_HN4xhtWGduLfeeXaVeMKBSOSagVBWNDenGuN4_yQWjYTg69RZxOPl0AXpTAzDGUCyXxOnqiwI_qcXrETfxmsAuQoQX8aq-7sEn0YWdzBO9H49zmNxTHuJcGCdMqQ7paowFf4M7MBflebCSPt7p77YGudeeoAaM24SEWgTaR4YoM5gX9z"/>
+</div>
+<div class="col-span-2 rounded-xl overflow-hidden shadow-sm relative group flex items-center justify-center bg-white border border-gray-200">
+<div class="text-center p-6">
+<span class="material-symbols-outlined text-orange text-4xl mb-2" data-icon="photo_camera">photo_camera</span>
+<h4 class="font-headline-md text-headline-md text-navy">See the Difference</h4>
+<p class="font-body-sm text-gray-500 mt-2">Explore our full portfolio of precision restorations.</p>
+</div>
+</div>
+</div>
+<a class="md:hidden text-orange font-label-caps text-label-caps flex items-center justify-center gap-2 hover:underline underline-offset-4 mt-4" href="#">
+                View Full Gallery
+                <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</section>
+<!-- Testimonials Section -->
+<section class="w-full py-section-padding-lg relative overflow-hidden light-surface-override py-32">
+<!-- Ambient glow -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-orange/5 blur-[120px] rounded-full pointer-events-none"></div>
+<div class="max-w-container-max mx-auto px-gutter relative z-10 text-center flex flex-col items-center gap-8">
+<span class="material-symbols-outlined text-orange text-4xl opacity-80" data-icon="format_quote">format_quote</span>
+<blockquote class="font-headline-lg text-headline-lg max-w-4xl mx-auto leading-tight text-navy">
+                "I have a consistently excellent experience with Nexus Dental Lab. Their digital dentistry restorations are unmatched, providing reliable results through advanced CAD/CAM technology."
+            </blockquote>
+<div class="flex flex-col items-center gap-2">
+<p class="font-label-caps text-label-caps text-orange">Dr. Sarah Jones, DDS</p>
+<p class="font-body-md text-body-md text-gray-600">Prosthodontist</p>
+</div>
+<div class="flex gap-4 mt-8">
+<button class="w-10 h-10 rounded-full border flex items-center justify-center transition-colors border-gray-300 text-navy hover:bg-gray-100">
+<span class="material-symbols-outlined text-[20px]" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-10 h-10 rounded-full border flex items-center justify-center transition-colors border-gray-300 text-navy hover:bg-gray-100">
+<span class="material-symbols-outlined text-[20px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="w-full py-section-padding-lg">
+<div class="max-w-container-max mx-auto px-gutter max-w-3xl">
+<div class="text-center mb-12">
+<h2 class="font-headline-lg text-headline-lg text-navy mb-4">Frequently Asked Questions</h2>
+<p class="font-body-md text-body-md text-gray-600">Everything you need to know about partnering with us.</p>
+</div>
+<div class="flex flex-col gap-4">
+<!-- FAQ Item 1 -->
+<div class="border-b border-gray-200 pb-4">
+<button class="w-full flex justify-between items-center py-4 text-left group">
+<span class="font-headline-md text-body-lg font-semibold text-navy group-hover:text-orange transition-colors">What types of dental restorations do you offer?</span>
+<span class="material-symbols-outlined text-gray-400 group-hover:text-orange transition-colors" data-icon="add">add</span>
+</button>
+</div>
+<!-- FAQ Item 2 -->
+<div class="border-b border-gray-200 pb-4">
+<button class="w-full flex justify-between items-center py-4 text-left group">
+<span class="font-headline-md text-body-lg font-semibold text-navy group-hover:text-orange transition-colors">What materials do you use?</span>
+<span class="material-symbols-outlined text-gray-400 group-hover:text-orange transition-colors" data-icon="add">add</span>
+</button>
+</div>
+<!-- FAQ Item 3 -->
+<div class="border-b border-gray-200 pb-4">
+<button class="w-full flex justify-between items-center py-4 text-left group">
+<span class="font-headline-md text-body-lg font-semibold text-navy group-hover:text-orange transition-colors">Do you offer digital dentistry services?</span>
+<span class="material-symbols-outlined text-gray-400 group-hover:text-orange transition-colors" data-icon="add">add</span>
+</button>
+</div>
+<!-- FAQ Item 4 -->
+<div class="border-b border-gray-200 pb-4">
+<button class="w-full flex justify-between items-center py-4 text-left group">
+<span class="font-headline-md text-body-lg font-semibold text-navy group-hover:text-orange transition-colors">Can I work directly with Nexus Dental Lab as a patient?</span>
+<span class="material-symbols-outlined text-gray-400 group-hover:text-orange transition-colors" data-icon="add">add</span>
+</button>
+</div>
+<!-- FAQ Item 5 -->
+<div class="border-b border-gray-200 pb-4">
+<button class="w-full flex justify-between items-center py-4 text-left group">
+<span class="font-headline-md text-body-lg font-semibold text-navy group-hover:text-orange transition-colors">Do you offer any warranties on your restorations?</span>
+<span class="material-symbols-outlined text-gray-400 group-hover:text-orange transition-colors" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<section class="w-full light-surface-override py-section-padding-lg py-32" id="contact">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-navy mb-4">Get in Touch</h2>
+<p class="font-body-md text-body-md text-gray-600">Have questions about our restorations or want to start a partnership? Reach out to our team.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+<!-- Contact Information -->
+<div class="flex flex-col gap-8">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm border border-gray-100 flex-shrink-0">
+<span class="material-symbols-outlined text-orange" data-icon="location_on">location_on</span>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="font-label-caps text-label-caps text-gray-400 uppercase">Our Location</h4>
+<p class="font-body-md text-navy">10564 Progress way #F,<br/>Cypress, CA 90630</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm border border-gray-100 flex-shrink-0">
+<span class="material-symbols-outlined text-orange" data-icon="call">call</span>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="font-label-caps text-label-caps text-gray-400 uppercase">Call Us</h4>
+<a class="font-body-md text-navy hover:text-orange transition-colors" href="tel:714-225-7019">714-225-7019</a>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm border border-gray-100 flex-shrink-0">
+<span class="material-symbols-outlined text-orange" data-icon="mail">mail</span>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="font-label-caps text-label-caps text-gray-400 uppercase">Email Us</h4>
+<a class="font-body-md text-navy hover:text-orange transition-colors" href="mailto:nexusdentallab@gmail.com">nexusdentallab@gmail.com</a>
+</div>
+</div>
+<div class="mt-8 p-6 bg-white border border-gray-200 rounded-xl shadow-sm">
+<p class="font-body-md text-gray-600 italic">"Precision in every piece, relationship in every restoration. We look forward to working with your practice."</p>
+</div>
+</div>
+<!-- Contact Form -->
+<div class="bg-white p-8 rounded-xl shadow-md border border-gray-100">
+<form action="#" class="flex flex-col gap-6" method="POST">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-gray-600" for="name">Full Name</label>
+<input class="border-gray-200 rounded-lg focus:ring-orange focus:border-orange font-body-md p-3" id="name" name="name" placeholder="John Doe" required="" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-gray-600" for="email">Email Address</label>
+<input class="border-gray-200 rounded-lg focus:ring-orange focus:border-orange font-body-md p-3" id="email" name="email" placeholder="john@example.com" required="" type="email"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-gray-600" for="subject">Subject</label>
+<input class="border-gray-200 rounded-lg focus:ring-orange focus:border-orange font-body-md p-3" id="subject" name="subject" placeholder="New Partnership Inquiry" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-gray-600" for="message">Message</label>
+<textarea class="border-gray-200 rounded-lg focus:ring-orange focus:border-orange font-body-md p-3" id="message" name="message" placeholder="How can we help you?" required="" rows="4"></textarea>
+</div>
+<button class="bg-orange text-white px-8 py-4 rounded hover:bg-orange/90 transition-colors flex items-center justify-center gap-2 font-label-caps text-label-caps shadow-sm w-full md:w-fit" type="submit">
+                        Send Message
+                        <span class="material-symbols-outlined" data-icon="send">send</span>
+</button>
+</form>
+</div>
+</div>
+</div>
+</section><footer class="bg-light-surface text-navy font-body-md text-body-md full-width border-t border-gray-200">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-gutter py-section-padding-sm max-w-container-max mx-auto">
+<div class="flex flex-col gap-4">
+<div class="font-headline-md text-headline-md font-bold text-navy flex items-center gap-2">
+<span class="material-symbols-outlined text-orange" data-icon="token" style="font-variation-settings: 'FILL' 1;">token</span>
+                    Nexus Dental Lab
+                </div>
+<p class="text-gray-500 text-sm mt-4">© 2024 Nexus Dental Lab. Precision Engineering for Modern Dentistry.</p>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-label-caps text-label-caps text-gray-400">Quick Links</h4>
+<div class="flex flex-col gap-2">
+<a class="text-gray-600 hover:text-orange underline-offset-4 hover:underline transition-all duration-200" href="#">Home</a>
+<a class="text-gray-600 hover:text-orange underline-offset-4 hover:underline transition-all duration-200" href="#">About Us</a>
+<a class="text-gray-600 hover:text-orange underline-offset-4 hover:underline transition-all duration-200" href="#">Services</a>
+<a class="text-gray-600 hover:text-orange underline-offset-4 hover:underline transition-all duration-200" href="#">Gallery</a>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-label-caps text-label-caps text-gray-400">Legal</h4>
+<div class="flex flex-col gap-2">
+<a class="text-gray-600 hover:text-orange underline-offset-4 hover:underline transition-all duration-200" href="#">Cypress, CA</a>
+<a class="text-gray-600 hover:text-orange underline-offset-4 hover:underline transition-all duration-200" href="#">Privacy Policy</a>
+<a class="text-gray-600 hover:text-orange underline-offset-4 hover:underline transition-all duration-200" href="#">Terms of Service</a>
+<a class="text-gray-600 hover:text-orange underline-offset-4 hover:underline transition-all duration-200" href="#">Accessibility</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
