@@ -246,8 +246,45 @@ export default function Home() {
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
 
   // Gallery State
-  const [visibleGalleryCount, setVisibleGalleryCount] = useState(6);
+  const [galleryIndex, setGalleryIndex] = useState(0);
+  const [itemsPerView, setItemsPerView] = useState(4);
   const [selectedGalleryImage, setSelectedGalleryImage] = useState<(typeof galleryImages)[number] | null>(null);
+
+  // Touch Swipe State
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  // Detect items per view based on window size
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setItemsPerView(2);
+      } else {
+        setItemsPerView(4);
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Auto rotation for gallery slider (3 seconds interval)
+  useEffect(() => {
+    const maxIndex = Math.max(0, galleryImages.length - itemsPerView);
+    if (maxIndex <= 0) return;
+
+    const interval = setInterval(() => {
+      setGalleryIndex((prev) => {
+        if (prev >= maxIndex) {
+          return 0;
+        }
+        return prev + 1;
+      });
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [galleryIndex, itemsPerView]);
+
 
   // Contact Form State
   const [formData, setFormData] = useState({
@@ -274,6 +311,39 @@ export default function Home() {
     setCurrentTestimonialIndex((prev) =>
       prev === testimonialsData.length - 1 ? 0 : prev + 1
     );
+  };
+
+  const handlePrevGallery = () => {
+    setGalleryIndex((prev) => Math.max(prev - 1, 0));
+  };
+
+  const handleNextGallery = () => {
+    const maxIndex = Math.max(0, galleryImages.length - itemsPerView);
+    setGalleryIndex((prev) => Math.min(prev + 1, maxIndex));
+  };
+
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      handleNextGallery();
+    } else if (isRightSwipe) {
+      handlePrevGallery();
+    }
   };
 
   const handleInputChange = (
@@ -596,56 +666,68 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Gallery Section (Bento Grid) */}
-      <section id="gallery" className="w-full light-surface-override py-32 scroll-mt-20">
+      {/* Gallery Section (Carousel Slider) */}
+      <section id="gallery" className="w-full light-surface-override py-32 scroll-mt-20 overflow-hidden">
         <div className="max-w-container-max mx-auto px-gutter flex flex-col gap-12">
           <ScrollReveal direction="up">
             <div className="flex justify-between items-end">
               <h2 className="font-headline-lg text-headline-lg text-navy">Our Precision Work</h2>
+              <div className="flex gap-2">
+                <button
+                  onClick={handlePrevGallery}
+                  disabled={galleryIndex === 0}
+                  className="w-10 h-10 rounded-full border flex items-center justify-center transition-all border-gray-300 text-navy hover:bg-navy hover:text-white hover:border-navy disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-navy disabled:hover:border-gray-300 disabled:cursor-not-allowed focus:outline-none"
+                  aria-label="Previous slides"
+                >
+                  <IconSymbol className="h-5 w-5" name="chevron_left" />
+                </button>
+                <button
+                  onClick={handleNextGallery}
+                  disabled={galleryIndex >= Math.max(0, galleryImages.length - itemsPerView)}
+                  className="w-10 h-10 rounded-full border flex items-center justify-center transition-all border-gray-300 text-navy hover:bg-navy hover:text-white hover:border-navy disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-navy disabled:hover:border-gray-300 disabled:cursor-not-allowed focus:outline-none"
+                  aria-label="Next slides"
+                >
+                  <IconSymbol className="h-5 w-5" name="chevron_right" />
+                </button>
+              </div>
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[170px] md:auto-rows-[210px]">
-            {galleryImages.slice(0, visibleGalleryCount).map((image, idx) => (
-              <ScrollReveal
-                className={`${idx === 0 ? "col-span-2 row-span-2" : ""} ${idx === 7 ? "md:col-span-2" : ""}`}
-                delay={idx * 0.03}
-                direction="up"
-                key={image.src}
+          <ScrollReveal direction="up" delay={0.1}>
+            <div className="overflow-hidden w-full relative">
+              <motion.div
+                className="flex gap-4 cursor-grab active:cursor-grabbing"
+                animate={{ x: `calc(-${(galleryIndex * 100) / itemsPerView}% - ${(galleryIndex * 16) / itemsPerView}px)` }}
+                transition={{ type: "spring", stiffness: 180, damping: 24 }}
+                onTouchStart={onTouchStart}
+                onTouchMove={onTouchMove}
+                onTouchEnd={onTouchEnd}
               >
-                <button
-                  aria-label={`Open ${image.alt}`}
-                  className="relative h-full w-full rounded-xl overflow-hidden shadow-sm group bg-white cursor-zoom-in focus:outline-none"
-                  onClick={() => setSelectedGalleryImage(image)}
-                  type="button"
-                >
-                  <Image
-                    alt={image.alt}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    fill
-                    sizes={idx === 0 ? "(min-width: 768px) 50vw, 100vw" : "(min-width: 768px) 25vw, 50vw"}
-                    src={image.src}
-                  />
-                  <div className="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-colors duration-500"></div>
-                </button>
-              </ScrollReveal>
-            ))}
-          </div>
-
-          {visibleGalleryCount < galleryImages.length && (
-            <button
-              className="self-center bg-orange text-white px-7 py-4 rounded hover:bg-orange/90 transition-all active:scale-95 flex items-center gap-2 font-label-caps text-label-caps shadow-sm"
-              onClick={() =>
-                setVisibleGalleryCount((current) =>
-                  Math.min(current + 6, galleryImages.length)
-                )
-              }
-              type="button"
-            >
-              Load More
-              <IconSymbol className="h-[18px] w-[18px]" name="add" />
-            </button>
-          )}
+                {galleryImages.map((image) => (
+                  <div
+                    className="w-[calc(50%-8px)] md:w-[calc(25%-12px)] shrink-0 aspect-[4/3] rounded-xl overflow-hidden shadow-sm group bg-white relative"
+                    key={image.src}
+                  >
+                    <button
+                      aria-label={`Open ${image.alt}`}
+                      className="relative h-full w-full cursor-zoom-in focus:outline-none"
+                      onClick={() => setSelectedGalleryImage(image)}
+                      type="button"
+                    >
+                      <Image
+                        alt={image.alt}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        fill
+                        sizes="(min-width: 768px) 25vw, 50vw"
+                        src={image.src}
+                      />
+                      <div className="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                    </button>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
