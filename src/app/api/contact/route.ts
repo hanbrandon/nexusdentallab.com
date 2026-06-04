@@ -22,18 +22,37 @@ export async function POST(request: Request) {
       );
     }
 
+    // Parse recipient emails from env or fallback to businessEmail
+    const toEmailsEnv = process.env.BREVO_TO_EMAILS;
+    let recipients: { email: string; name?: string }[] = [];
+
+    if (toEmailsEnv) {
+      recipients = toEmailsEnv
+        .split(",")
+        .map((email) => email.trim())
+        .filter((email) => email.length > 0)
+        .map((email) => ({
+          email: email,
+          name: email.split("@")[0] || "Nexus Dental Lab Admin",
+        }));
+    }
+
+    if (recipients.length === 0) {
+      recipients = [
+        {
+          email: businessEmail,
+          name: "Nexus Dental Lab Admin",
+        },
+      ];
+    }
+
     // Brevo API Request Body
     const requestBody = {
       sender: {
         name: "Nexus Dental Lab Web Contact",
         email: businessEmail, // This must be a verified sender/domain in Brevo
       },
-      to: [
-        {
-          email: businessEmail, // Destination recipient email
-          name: "Nexus Dental Lab Admin",
-        },
-      ],
+      to: recipients,
       replyTo: {
         email: email,
         name: name,
